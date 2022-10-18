@@ -1,0 +1,34 @@
+package livekit_client.dist.src.room.room;
+
+typedef RoomEventCallbacks = {
+	dynamic function connected():Void;
+	dynamic function reconnecting():Void;
+	dynamic function reconnected():Void;
+	dynamic function disconnected(?reason:livekit_client.DisconnectReason):Void;
+	dynamic function stateChanged(state:livekit_client.ConnectionState):Void;
+	dynamic function connectionStateChanged(state:livekit_client.ConnectionState):Void;
+	dynamic function mediaDevicesChanged():Void;
+	dynamic function participantConnected(participant:livekit_client.RemoteParticipant):Void;
+	dynamic function participantDisconnected(participant:livekit_client.RemoteParticipant):Void;
+	dynamic function trackPublished(publication:livekit_client.RemoteTrackPublication, participant:livekit_client.RemoteParticipant):Void;
+	dynamic function trackSubscribed(track:Dynamic, publication:livekit_client.RemoteTrackPublication, participant:livekit_client.RemoteParticipant):Void;
+	dynamic function trackSubscriptionFailed(trackSid:String, participant:livekit_client.RemoteParticipant):Void;
+	dynamic function trackUnpublished(publication:livekit_client.RemoteTrackPublication, participant:livekit_client.RemoteParticipant):Void;
+	dynamic function trackUnsubscribed(track:Dynamic, publication:livekit_client.RemoteTrackPublication, participant:livekit_client.RemoteParticipant):Void;
+	dynamic function trackMuted(publication:Dynamic, participant:Dynamic):Void;
+	dynamic function trackUnmuted(publication:Dynamic, participant:Dynamic):Void;
+	dynamic function localTrackPublished(publication:Dynamic, participant:livekit_client.LocalParticipant):Void;
+	dynamic function localTrackUnpublished(publication:Dynamic, participant:livekit_client.LocalParticipant):Void;
+	dynamic function participantMetadataChanged(metadata:Null<String>, participant:ts.AnyOf2<livekit_client.RemoteParticipant, livekit_client.LocalParticipant>):Void;
+	dynamic function participantPermissionsChanged(prevPermissions:livekit_client.dist.src.proto.livekit_models.ParticipantPermission, participant:ts.AnyOf2<livekit_client.RemoteParticipant, livekit_client.LocalParticipant>):Void;
+	dynamic function activeSpeakersChanged(speakers:Array<Dynamic>):Void;
+	dynamic function roomMetadataChanged(metadata:String):Void;
+	dynamic function dataReceived(payload:js.lib.Uint8Array, ?participant:livekit_client.RemoteParticipant, ?kind:livekit_client.DataPacket_Kind):Void;
+	dynamic function connectionQualityChanged(quality:Dynamic, participant:Dynamic):Void;
+	dynamic function mediaDevicesError(error:js.lib.Error):Void;
+	dynamic function trackStreamStateChanged(publication:livekit_client.RemoteTrackPublication, streamState:livekit_client.track.StreamState, participant:livekit_client.RemoteParticipant):Void;
+	dynamic function trackSubscriptionPermissionChanged(publication:livekit_client.RemoteTrackPublication, status:Dynamic, participant:livekit_client.RemoteParticipant):Void;
+	dynamic function trackSubscriptionStatusChanged(publication:livekit_client.RemoteTrackPublication, status:Dynamic, participant:livekit_client.RemoteParticipant):Void;
+	dynamic function audioPlaybackChanged(playing:Bool):Void;
+	dynamic function signalConnected():Void;
+};
