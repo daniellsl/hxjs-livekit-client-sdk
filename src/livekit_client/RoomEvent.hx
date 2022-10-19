@@ -13,32 +13,32 @@ package livekit_client;
 	/**
 		When the connection to the server has been established
 	**/
-	var Connected;
+	var Connected = 'connected';
 	/**
 		When the connection to the server has been interrupted and it's attempting
 		to reconnect.
 	**/
-	var Reconnecting;
+	var Reconnecting = 'reconnecting';
 	/**
 		Fires when a reconnection has been successful.
 	**/
-	var Reconnected;
+	var Reconnected = 'reconnected';
 	/**
 		When disconnected from room. This fires when room.disconnect() is called or
 		when an unrecoverable connection issue had occured
 	**/
-	var Disconnected;
+	var Disconnected = 'disconnected';
 	/**
 		Whenever the connection state of the room changes
 		
 		args: ([[ConnectionState]])
 	**/
-	var ConnectionStateChanged;
-	var StateChanged;
+	var ConnectionStateChanged = 'connectionStateChanged';
+	var StateChanged = 'stateChanged';
 	/**
 		When input or output devices on the machine have changed.
 	**/
-	var MediaDevicesChanged;
+	var MediaDevicesChanged = 'mediaDevicesChanged';
 	/**
 		When a [[RemoteParticipant]] joins *after* the local
 		participant. It will not emit events for participants that are already
@@ -46,14 +46,14 @@ package livekit_client;
 		
 		args: ([[RemoteParticipant]])
 	**/
-	var ParticipantConnected;
+	var ParticipantConnected = 'participantConnected';
 	/**
 		When a [[RemoteParticipant]] leaves *after* the local
 		participant has joined.
 		
 		args: ([[RemoteParticipant]])
 	**/
-	var ParticipantDisconnected;
+	var ParticipantDisconnected = 'participantDisconnected';
 	/**
 		When a new track is published to room *after* the local
 		participant has joined. It will not fire for tracks that are already published.
@@ -63,52 +63,52 @@ package livekit_client;
 		
 		args: ([[RemoteTrackPublication]], [[RemoteParticipant]])
 	**/
-	var TrackPublished;
+	var TrackPublished = 'trackPublished';
 	/**
 		The [[LocalParticipant]] has subscribed to a new track. This event will **always**
 		fire as long as new tracks are ready for use.
 		
 		args: ([[RemoteTrack]], [[RemoteTrackPublication]], [[RemoteParticipant]])
 	**/
-	var TrackSubscribed;
+	var TrackSubscribed = 'trackSubscribed';
 	/**
 		Could not subscribe to a track
 		
 		args: (track sid, [[RemoteParticipant]])
 	**/
-	var TrackSubscriptionFailed;
+	var TrackSubscriptionFailed = 'trackSubscriptionFailed';
 	/**
 		A [[RemoteParticipant]] has unpublished a track
 		
 		args: ([[RemoteTrackPublication]], [[RemoteParticipant]])
 	**/
-	var TrackUnpublished;
+	var TrackUnpublished = 'trackUnpublished';
 	/**
 		A subscribed track is no longer available. Clients should listen to this
 		event and ensure they detach tracks.
 		
 		args: ([[Track]], [[RemoteTrackPublication]], [[RemoteParticipant]])
 	**/
-	var TrackUnsubscribed;
+	var TrackUnsubscribed = 'trackUnsubscribed';
 	/**
 		A track that was muted, fires on both [[RemoteParticipant]]s and [[LocalParticipant]]
 		
 		args: ([[TrackPublication]], [[Participant]])
 	**/
-	var TrackMuted;
+	var TrackMuted = 'trackMuted';
 	/**
 		A track that was unmuted, fires on both [[RemoteParticipant]]s and [[LocalParticipant]]
 		
 		args: ([[TrackPublication]], [[Participant]])
 	**/
-	var TrackUnmuted;
+	var TrackUnmuted = 'trackUnmuted';
 	/**
 		A local track was published successfully. This event is helpful to know
 		when to update your local UI with the newly published track.
 		
 		args: ([[LocalTrackPublication]], [[LocalParticipant]])
 	**/
-	var LocalTrackPublished;
+	var LocalTrackPublished = 'localTrackPublished';
 	/**
 		A local track was unpublished. This event is helpful to know when to remove
 		the local track from your UI.
@@ -118,7 +118,7 @@ package livekit_client;
 		
 		args: ([[LocalTrackPublication]], [[LocalParticipant]])
 	**/
-	var LocalTrackUnpublished;
+	var LocalTrackUnpublished = 'localTrackUnpublished';
 	/**
 		Active speakers changed. List of speakers are ordered by their audio level.
 		loudest speakers first. This will include the LocalParticipant too.
@@ -127,7 +127,7 @@ package livekit_client;
 		
 		args: (Array<[[Participant]]>)
 	**/
-	var ActiveSpeakersChanged;
+	var ActiveSpeakersChanged = 'activeSpeakersChanged';
 	/**
 		Participant metadata is a simple way for app-specific state to be pushed to
 		all users.
@@ -136,7 +136,7 @@ package livekit_client;
 		
 		args: (prevMetadata: string, [[Participant]])
 	**/
-	var ParticipantMetadataChanged;
+	var ParticipantMetadataChanged = 'participantMetadataChanged';
 	/**
 		Room metadata is a simple way for app-specific state to be pushed to
 		all users.
@@ -145,7 +145,7 @@ package livekit_client;
 		
 		args: (string)
 	**/
-	var RoomMetadataChanged;
+	var RoomMetadataChanged = 'roomMetadataChanged';
 	/**
 		Data received from another participant.
 		Data packets provides the ability to use LiveKit to send/receive arbitrary payloads.
@@ -153,7 +153,7 @@ package livekit_client;
 		
 		args: (payload: Uint8Array, participant: [[Participant]], kind: [[DataPacket_Kind]])
 	**/
-	var DataReceived;
+	var DataReceived = 'dataReceived';
 	/**
 		Connection quality was changed for a Participant. It'll receive updates
 		from the local participant, as well as any [[RemoteParticipant]]s that we are
@@ -161,7 +161,7 @@ package livekit_client;
 		
 		args: (connectionQuality: [[ConnectionQuality]], participant: [[Participant]])
 	**/
-	var ConnectionQualityChanged;
+	var ConnectionQualityChanged = 'connectionQualityChanged';
 	/**
 		StreamState indicates if a subscribed (remote) track has been paused by the SFU
 		(typically this happens because of subscriber's bandwidth constraints)
@@ -172,7 +172,7 @@ package livekit_client;
 		args: (pub: [[RemoteTrackPublication]], streamState: [[Track.StreamState]],
 		        participant: [[RemoteParticipant]])
 	**/
-	var TrackStreamStateChanged;
+	var TrackStreamStateChanged = 'trackStreamStateChanged';
 	/**
 		One of subscribed tracks have changed its permissions for the current
 		participant. If permission was revoked, then the track will no longer
@@ -183,7 +183,7 @@ package livekit_client;
 		        status: [[TrackPublication.SubscriptionStatus]],
 		        participant: [[RemoteParticipant]])
 	**/
-	var TrackSubscriptionPermissionChanged;
+	var TrackSubscriptionPermissionChanged = 'trackSubscriptionPermissionChanged';
 	/**
 		One of subscribed tracks have changed its status for the current
 		participant.
@@ -192,13 +192,13 @@ package livekit_client;
 		        status: [[TrackPublication.SubscriptionStatus]],
 		        participant: [[RemoteParticipant]])
 	**/
-	var TrackSubscriptionStatusChanged;
+	var TrackSubscriptionStatusChanged = 'trackSubscriptionStatusChanged';
 	/**
 		LiveKit will attempt to autoplay all audio tracks when you attach them to
 		audio elements. However, if that fails, we'll notify you via AudioPlaybackStatusChanged.
 		`Room.canPlayAudio` will indicate if audio playback is permitted.
 	**/
-	var AudioPlaybackStatusChanged;
+	var AudioPlaybackStatusChanged = 'audioPlaybackStatusChanged';
 	/**
 		When we have encountered an error while attempting to create a track.
 		The errors take place in getUserMedia().
@@ -208,14 +208,14 @@ package livekit_client;
 		
 		args: (error: Error)
 	**/
-	var MediaDevicesError;
+	var MediaDevicesError = 'mediaDevicesError';
 	/**
 		A participant's permission has changed. Currently only fired on LocalParticipant.
 		args: (prevPermissions: [[ParticipantPermission]], participant: [[Participant]])
 	**/
-	var ParticipantPermissionsChanged;
+	var ParticipantPermissionsChanged = 'participantPermissionsChanged';
 	/**
 		Signal connected, can publish tracks.
 	**/
-	var SignalConnected;
+	var SignalConnected = 'signalConnected';
 }
